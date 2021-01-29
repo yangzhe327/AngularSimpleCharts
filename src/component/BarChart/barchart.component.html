@@ -1,0 +1,61 @@
+<chart-wrapper
+[width]="width"
+[height]="height"
+[pivot]="pivot"
+[padding]="_padding">
+    <svg:g chart-xAxis
+    *ngIf="!hideXAxis"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [domain]="pivot? yDomain : xDomain"
+        [hideAxisPath]="hideAxisPath"
+        [xAxisTick]="xAxisTick"
+        [xTickFormatter]="xTickFormatter"
+        [x]="x"
+        [y]="y">
+    </svg:g>
+    <svg:g chart-yAxis
+    *ngIf="!hideYAxis"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [domain]="pivot? xDomain : yDomain"
+        [hideAxisPath]="hideAxisPath"
+        [yTickFormatter]="yTickFormatter"
+        [x]="x"
+        [y]="y">
+    </svg:g>
+    <svg:g chart-xgrid
+    *ngIf="xGrid"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [yDomain]="pivot? _xDomain : yDomain"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="bandwidth">
+    </svg:g>
+    <svg:g chart-ygrid
+    *ngIf="yGrid"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [xDomain]="pivot? yDomain : _xDomain"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="bandwidth">
+    </svg:g>
+    <svg:g chart-bar
+    *ngFor="let item of data; let i=index;"
+        [data]="item"
+        [pivot]="pivot"
+        [width]="_width"
+        [height]="_height"
+        [barWidth]="styles.bar.width"
+        [color]="styles.color"
+        [x]="x"
+        [y]="y"
+        [offset]="moveBarToCenter">
+    </svg:g>
+</chart-wrapper>

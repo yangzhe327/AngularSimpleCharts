@@ -1,0 +1,64 @@
+<chart-wrapper
+[width]="width"
+[height]="height"
+[pivot]="pivot"
+[padding]="_padding">
+    <svg:g chart-xAxis
+    *ngIf="!hideXAxis"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [domain]="_xDomain"
+        [hideAxisPath]="hideAxisPath"
+        [xAxisTick]="xAxisTick"
+        [xTickFormatter]="xTickFormatter"
+        [x]="x"
+        [y]="y">
+    </svg:g>
+    <svg:g chart-yAxis
+    *ngIf="!hideYAxis"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [domain]="yDomain"
+        [hideAxisPath]="hideAxisPath"
+        [yTickFormatter]="yTickFormatter"
+        [x]="x"
+        [y]="y"
+        [isBand]="false">
+    </svg:g>
+    <svg:g chart-xgrid
+    *ngIf="xGrid"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [yDomain]="yDomain"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="xBandwidth">
+    </svg:g>
+    <svg:g chart-ygrid
+    *ngIf="yGrid"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [xDomain]="_xDomain"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="xBandwidth"
+        [isBand]="false">
+    </svg:g>
+    <svg:g chart-bubble
+    *ngFor="let item of data; let i=index;"
+        [data]="item"
+        [width]="_width"
+        [height]="_height"
+        [styles]="styles.bubble"
+        [x]="x"
+        [y]="y"
+        [xBandwidth]="xBandwidth"
+        [yBandwidth]="yBandwidth"
+        [maxValue]="maxValue">
+    </svg:g>
+
+</chart-wrapper>

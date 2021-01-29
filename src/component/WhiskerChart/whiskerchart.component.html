@@ -1,0 +1,70 @@
+<chart-wrapper
+[width]="width"
+[height]="height"
+[pivot]="pivot"
+[padding]="_padding">
+    <svg:g chart-xAxis
+    *ngIf="!hideXAxis"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [domain]="pivot? yDomain : xDomain"
+        [hideAxisPath]="hideAxisPath"
+        [xAxisTick]="xAxisTick"
+        [xTickFormatter]="xTickFormatter"
+        [x]="x"
+        [y]="y">
+    </svg:g>
+    <svg:g chart-yAxis
+    *ngIf="!hideYAxis"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [domain]="pivot? xDomain : yDomain"
+        [hideAxisPath]="hideAxisPath"
+        [yTickFormatter]="yTickFormatter"
+        [x]="x"
+        [y]="y">
+    </svg:g>
+    <svg:g chart-xgrid
+    *ngIf="xGrid"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [yDomain]="pivot? _xDomain : yDomain"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="xBandwidth">
+    </svg:g>
+    <svg:g chart-ygrid
+    *ngIf="yGrid"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [xDomain]="pivot? yDomain : _xDomain"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="xBandwidth">
+    </svg:g>
+    <svg:g chart-whisker
+    *ngFor="let item of mapData; let i=index;"  
+        [data]="item"
+        [x]="x"
+        [y]="y"
+        [styles]="styles.whisker"
+        [offset]="moveBarToCenter">
+    </svg:g>
+    <svg:g chart-legend
+    *ngFor="let item of legendData; let i=index;"
+        [width]="_width"
+        [height]="_height"
+        [itemData]="item"
+        [legendData]="legendData"
+        [legendIndex]="i"
+        [styles]="styles.legend"
+        [legendArrangement]="legendArrangement"
+        [decoratorComponent]="decoratorComponent"
+    >
+    </svg:g>
+
+</chart-wrapper>

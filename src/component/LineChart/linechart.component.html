@@ -1,0 +1,92 @@
+<chart-wrapper
+[width]="width"
+[height]="height"
+[pivot]="pivot"
+[padding]="_padding">
+    <svg:g chart-xAxis
+    *ngIf="!hideXAxis"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [domain]="_xDomain"
+        [hideAxisPath]="hideAxisPath"
+        [xAxisTick]="xAxisTick"
+        [xTickFormatter]="xTickFormatter"
+        [x]="x"
+        [y]="y">
+    </svg:g>
+    <svg:g chart-yAxis
+    *ngIf="!hideYAxis"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [domain]="yDomain"
+        [hideAxisPath]="hideAxisPath"
+        [yTickFormatter]="yTickFormatter"
+        [x]="x"
+        [y]="y">
+    </svg:g>
+    <svg:g chart-xgrid
+    *ngIf="xGrid"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [yDomain]="yDomain"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="bandwidth">
+    </svg:g>
+    <svg:g chart-ygrid
+    *ngIf="yGrid"
+        [width]="_width"
+        [height]="_height"
+        [pivot]="pivot"
+        [xDomain]="_xDomain"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="bandwidth">
+    </svg:g>
+    <svg:g chart-area
+    *ngFor="let item of groupData; let i=index;"
+        [width]="_width"
+        [height]="_height"
+        [area]="area"
+        [data]="item"
+        [color]="styles.colors[i]"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="bandwidth">
+    </svg:g>
+    <svg:g chart-line
+    *ngFor="let item of groupData; let i=index;"
+        [width]="_width"
+        [height]="_height"
+        [data]="item"
+        [color]="styles.colors[i]"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="bandwidth">
+    </svg:g>
+    <svg:g chart-dot
+    *ngFor="let item of groupData; let i=index;"
+        [width]="_width"
+        [height]="_height"
+        [data]="item"
+        [color]="styles.colors[i]"
+        [x]="x"
+        [y]="y"
+        [bandwidth]="bandwidth">
+    </svg:g>
+    <svg:g chart-legend
+    *ngFor="let item of legendData; let i=index;"
+        [width]="_width"
+        [height]="_height"
+        [itemData]="item"
+        [legendData]="legendData"
+        [legendIndex]="i"
+        [styles]="styles"
+        [legendArrangement]="legendArrangement"
+        [decoratorComponent]="decoratorComponent"
+    >
+    </svg:g>
+</chart-wrapper>

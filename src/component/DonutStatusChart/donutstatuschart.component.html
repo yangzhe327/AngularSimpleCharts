@@ -1,0 +1,22 @@
+<chart-wrapper
+[width]="width"
+[height]="height"
+[pivot]="pivot"
+[padding]="_padding">
+    <svg:g chart-donut
+        [width]="_width"
+        [height]="_height"
+        [data]="mapData"
+        [radius]="radius"
+        [styles]="styles"
+        [summary]="summary"
+        >
+    </svg:g>
+    <svg:g chart-legend-status
+        [width]="_width"
+        [height]="_height"
+        [legendData]="legendData"
+        [styles]="styles.legend"
+    >
+    </svg:g>
+</chart-wrapper>

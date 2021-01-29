@@ -1,0 +1,25 @@
+<chart-wrapper
+[width]="width"
+[height]="height"
+[pivot]="pivot"
+[padding]="_padding">
+    <svg:g chart-donut
+        [width]="_width"
+        [height]="_height"
+        [data]="mapData"
+        [radius]="radius"
+        [styles]="styles">
+    </svg:g>
+    <svg:g chart-legend
+    *ngFor="let item of legendData; let i=index;"
+        [width]="_width"
+        [height]="_height"
+        [itemData]="item"
+        [legendData]="legendData"
+        [legendIndex]="i"
+        [styles]="styles.legend"
+        [legendArrangement]="legendArrangement"
+        [decoratorComponent]="decoratorComponent"
+    >
+    </svg:g>
+</chart-wrapper>

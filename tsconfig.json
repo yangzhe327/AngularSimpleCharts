@@ -16,10 +16,22 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "esModuleInterop": true,
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@omnia/ssccdt4": [
+        "src/component"
+      ],
+      "@omnia/ssccdt4/*": [
+        "src/component/*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
